@@ -1,0 +1,63 @@
+<MyAKBarChart@AKBarChart>
+    size_hint_y: None
+    height: dp(180)
+    x_values: [0, 5, 8, 15]
+    y_values: [0, 10, 6, 8]
+    label_size: dp(12)
+
+
+<Barchart>
+    on_leave: pass
+
+    MDBoxLayout:
+        orientation: "vertical"
+
+        MyToolbar:
+            id: _toolbar
+
+        ScrollView:
+
+            MDBoxLayout:
+                orientation: "vertical"
+                spacing: dp(25)
+                padding: dp(25)
+                adaptive_height: True
+
+                MyAKBarChart:
+                    id: chart1
+                    labels: True
+                    anim: False
+                    lines: False
+                    on_select: root.set_text(args)
+
+                MyAKBarChart:
+                    id: chart2
+                    labels: False
+                    anim: True
+                    lines_color: [0, 0, 0.4, 1]
+                    bars_color: [0, 0, 0.4, 1]
+                    on_select: root.set_text(args)
+
+                MyAKBarChart:
+                    id: chart3
+                    labels: True
+                    anim: True
+                    x_labels: ["XYZ", "Second", "Third", "Last"]
+                    y_labels: ["XYZ", "Second", "Third", "Last"]
+                    bars_color: 0.6, 0, 0, 1
+                    labels_color: 0.6, 0, 0, 1
+                    lines_color: 0.6, 0, 0, 1
+                    on_select: root.set_text(args)
+
+
+        MDBoxLayout:
+            adaptive_height: True
+
+            MDRaisedButton:
+                text: "update"
+                on_release: root.update()
+
+            MDLabel:
+                id: _label
+                halign: "center"
+                valign: "center"
