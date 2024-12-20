@@ -1,3 +1,368 @@
+#:import sm kivy.uix.screenmanager
+
+FloatLayout:
+    orientation: "vertical"
+    # Screen Manager for switching between screens
+    ScreenManager:
+        id: screen_manager
+        transition:sm.FadeTransition(duration=.0)
+
+        # Home Screen
+        MDScreen:
+            name: "home"
+            md_bg_color: 236/255, 236/255, 236/255, 1
+            FloatLayout:
+                orientation: "vertical"
+                ScrollView:
+                    pos_hint: {"center_x": .5, "center_y": .4}
+
+                    MDBoxLayout:
+                        orientation: "vertical"
+                        spacing: dp(25)
+                        padding: dp(25)
+                        adaptive_height: True
+
+                        MyAKBarChart:
+                            id: chart3
+                            labels: True
+                            anim: True
+                            x_labels: ["XYZ", "Second", "Third", "Last"]
+                            y_labels: ["40", "30", "10", "20"]
+                            bars_color:[0, 0, 0.4, 1]
+                            labels_color:[0, 0, 0.4, 1]
+                            lines_color: [0, 0, 0.4, 1]
+                            #on_select: root.set_text(args)
+
+                MDLabel:
+                    text: "112"
+                    font_style: "H3"
+                    halign: "left"
+                    pos_hint:{"center_x":.55, "center_y":.95}
+                MDLabel:
+                    text: "Around 17 per week"
+                    halign: "right"
+                    theme_text_color: "Secondary"
+                    pos_hint:{"center_x":.44, "center_y":.95}
+
+                MDSeparator:
+                    height: "2dp"
+                    pos_hint:{"center_x":.5, "center_y":.53}
+
+                BoxLayout:
+                    orientation: "vertical"
+                    padding: 30
+                    spacing: 20
+                    pos_hint:{"center_x":.5, "center_y":.6}
+
+
+                    # Schools section
+                    BoxLayout:
+                        orientation: "horizontal"
+                        spacing: 10
+                        size_hint_y: None
+                        height: "60dp"
+                        MDBoxLayout:
+                            size_hint: None, None
+                            size: "40dp", "40dp"
+                            md_bg_color: app.theme_cls.primary_color[0:3] + [0.2]
+                            radius: [10, 10, 10, 10]
+                            pos_hint: {"center_y": 0.5}
+                            padding: 5
+                            MDIcon:
+                                icon: "school"
+                                size_hint: None, None
+                                size: "24dp", "24dp"
+                                halign: "center"
+                                theme_text_color: "Custom"
+                                text_color: 0, 0, 0, 1
+                        MDLabel:
+                            text: "Schools"
+                            halign: "left"
+                            valign: "center"
+                        MDLabel:
+                            text: "45"
+                            font_style: "Subtitle1"
+                            halign: "left"
+                            valign: "center"
+                        MDSlider:
+                            value: 57
+                            min: 0
+                            max: 100
+                            hint: False
+
+                    # Students section
+                    BoxLayout:
+                        orientation: "horizontal"
+                        spacing: 10
+                        size_hint_y: None
+                        height: "60dp"
+
+                        MDBoxLayout:
+                            size_hint: None, None
+                            size: "40dp", "40dp"
+                            md_bg_color: app.theme_cls.primary_color[0:3] + [0.2]
+                            radius: [10, 10, 10, 10]
+                            pos_hint: {"center_y": 0.5}
+                            padding: 5
+
+                            MDIcon:
+                                icon: "account-group"
+                                size_hint: None, None
+                                size: "24dp", "24dp"
+                                halign: "center"
+                                theme_text_color: "Custom"
+                                text_color: 0, 0, 0, 1
+
+                        MDLabel:
+                            text: "Students"
+                            halign: "left"
+                            valign: "center"
+
+                        MDLabel:
+                            text: "50"
+                            font_style: "Subtitle1"
+                            halign: "left"
+                            valign: "center"
+
+                        MDSlider:
+                            value: 45
+                            min: 0
+                            max: 100
+                            hint: False
+
+                    # Visitors section
+                    BoxLayout:
+                        orientation: "horizontal"
+                        spacing: 10
+                        size_hint_y: None
+                        height: "60dp"
+
+                        MDBoxLayout:
+                            size_hint: None, None
+                            size: "40dp", "40dp"
+                            md_bg_color: app.theme_cls.primary_color[0:3] + [0.2]
+                            radius: [10, 10, 10, 10]
+                            pos_hint: {"center_y": 0.5}
+                            padding: 5
+
+                            MDIcon:
+                                icon: "account"
+                                size_hint: None, None
+                                size: "24dp", "24dp"
+                                halign: "center"
+                                theme_text_color: "Custom"
+                                text_color: 0, 0, 0, 1
+
+                        MDLabel:
+                            text: "Visitors"
+                            halign: "left"
+                            valign: "center"
+
+                        MDLabel:
+                            text: "65"
+                            font_style: "Subtitle1"
+                            halign: "left"
+                            valign: "center"
+
+                        MDSlider:
+                            value: 22
+                            min: 0
+                            max: 100
+                            hint: False
+
+                    MDSeparator:
+                        height: "2dp"
+
+
+        # Daily Attendance Screen
+        MDScreen:
+        MDScreen:
+            name: "daily"
+            BoxLayout:
+                orientation: "vertical"
+
+                # Date Selector
+                ScrollView:
+                    size_hint_y: None
+                    height: dp(60)
+                    do_scroll_y: False
+
+                    MDBoxLayout:
+                        padding: dp(10)
+                        spacing: dp(10)
+                        adaptive_width: True
+
+                        MDRaisedButton:
+                            text: "17"
+                            md_bg_color: 0.8, 0.8, 0.9, 1
+                        MDRaisedButton:
+                            text: "18"
+                            md_bg_color: 0.8, 0.8, 0.9, 1
+                        MDRaisedButton:
+                            text: "19"
+                            md_bg_color: 0.8, 0.8, 0.9, 1
+                        MDRaisedButton:
+                            text: "20"
+                            md_bg_color: 0.6, 0.6, 0.8, 1  # Selected date
+                        MDRaisedButton:
+                            text: "21"
+                            md_bg_color: 0.8, 0.8, 0.9, 1
+                        MDRaisedButton:
+                            text: "22"
+                            md_bg_color: 0.8, 0.8, 0.9, 1
+                        MDRaisedButton:
+                            text: "23"
+                            md_bg_color: 0.8, 0.8, 0.9, 1
+
+                # List of Items
+                ScrollView:
+                    MDList:
+                        TwoLineAvatarIconListItem:
+                            text: "Parent/visitor/school name"
+                            secondary_text: "Subtitle"
+                            IconLeftWidget:
+                                icon: "account"
+                            IconRightWidget:
+                                icon: "radiobox-blank"
+
+                        TwoLineAvatarIconListItem:
+                            text: "Parent/visitor/school name"
+                            secondary_text: "Subtitle"
+                            IconLeftWidget:
+                                icon: "account"
+                            IconRightWidget:
+                                icon: "radiobox-blank"
+
+                        TwoLineAvatarIconListItem:
+                            text: "Parent/visitor/school name"
+                            secondary_text: "Subtitle"
+                            IconLeftWidget:
+                                icon: "account"
+                            IconRightWidget:
+                                icon: "radiobox-blank"
+
+                        TwoLineAvatarIconListItem:
+                            text: "Parent/visitor/school name"
+                            secondary_text: "Subtitle"
+                            IconLeftWidget:
+                                icon: "account"
+                            IconRightWidget:
+                                icon: "radiobox-blank"
+
+        # Report Screen
+        MDScreen:
+            name: "report"
+            md_bg_color: [0.5, 0.5, 0.5, 1]
+            FloatLayout:
+                orientation: "vertical"
+
+                AsyncImage:
+                    source:app.nodata
+                    pos_hint:{'center_x':.7, 'center_y':.3}
+                    size_hint: None, None
+                    size: "350dp", "300dp"
+
+                MDIcon:
+                    icon: "calendar"
+                    halign:"center"
+                    font_size: "250sp"
+                    theme_text_color: "Custom"
+                    text_color: [0.2, 0.2, 0.2, 1]
+                    pos_hint:{"center_x":.5, "center_y":.8}
+
+
+                MDList:
+                    adaptive_height: True
+                    spacing: "20dp"
+                    pos_hint:{"center_x":.5,"center_y":.45}
+                    md_bg_color: [1, 1, 1, 0.5]
+
+                    OneLineRightIconListItem:
+                        text: "Weekly Report"
+                        on_release: print("Click!")
+
+                        IconRightWidget:
+                            icon: "chevron-right"
+                            on_release: print("Click!")
+
+                    OneLineRightIconListItem:
+                        text: "Monthly Report"
+                        on_release: print("Click!")
+
+                        IconRightWidget:
+                            icon: "chevron-right"
+                            on_release: print("Click!")
+
+                    OneLineRightIconListItem:
+                        text: "Year Report"
+                        halign:"left"
+                        on_release: print("Click!")
+
+                        IconRightWidget:
+                            icon: "chevron-right"
+                            on_release: print("Click!")
+
+        MDScreen:
+            name: "!internet"
+            md_bg_color:0 / 225, 0 / 225, 0 / 225, 1
+
+            FloatLayout:
+                orientation: "vertical"
+                MDLabel:
+                    text: "No internet !"
+                    halign: "center"
+                    font_style:'H6'
+                    theme_text_color: "Custom"
+                    text_color: 1, 1, 1, 1
+                    pos_hint:{"center_x":.5,"center_y":.92}
+
+                Image:
+                    source:app.internet
+                    pos_hint:{"center_x":.5,"center_y":.5}
+
+
+        MDScreen:
+            name: "chart"
+            MDBoxLayout:
+                orientation: "vertical"
+
+                MDRaisedButton:
+                    text: "hello"
+                    halign:"center"
+                    pos_hint:{"center_x":.5, "center_y":.7}
+                    on_release:
+                        app.update_graph()
+
+
+    # Bottom Navigation: This will stay the same for all screens
+    AKBottomNavigation2:
+        bg_color: app.theme_cls.bg_darkest
+
+        NavigationButton:
+            text: 'Home'
+            icon: 'home'
+            on_release:
+                screen_manager.current = "home"
+                app.update_graph()
+
+        NavigationButton:
+            text: 'Daily'
+            icon: 'calendar'
+            on_release: screen_manager.current = "daily"
+
+        NavigationButton:
+            text: 'Report'
+            icon: 'file-chart'
+            on_release: screen_manager.current = "report"
+
+
+<NavigationButton@Button_Item>
+    icon_color: app.theme_cls.text_color
+    text_color: app.theme_cls.text_color
+    button_bg_color: app.theme_cls.primary_color
+    mode: 'color_on_active'
+    badge_disabled: True
+
 <MyAKBarChart@AKBarChart>
     size_hint_y: None
     height: dp(180)
@@ -6,58 +371,26 @@
     label_size: dp(12)
 
 
-<Barchart>
-    on_leave: pass
-
-    MDBoxLayout:
-        orientation: "vertical"
-
-        MyToolbar:
-            id: _toolbar
-
-        ScrollView:
-
-            MDBoxLayout:
-                orientation: "vertical"
-                spacing: dp(25)
-                padding: dp(25)
-                adaptive_height: True
-
-                MyAKBarChart:
-                    id: chart1
-                    labels: True
-                    anim: False
-                    lines: False
-                    on_select: root.set_text(args)
-
-                MyAKBarChart:
-                    id: chart2
-                    labels: False
-                    anim: True
-                    lines_color: [0, 0, 0.4, 1]
-                    bars_color: [0, 0, 0.4, 1]
-                    on_select: root.set_text(args)
-
-                MyAKBarChart:
-                    id: chart3
-                    labels: True
-                    anim: True
-                    x_labels: ["XYZ", "Second", "Third", "Last"]
-                    y_labels: ["XYZ", "Second", "Third", "Last"]
-                    bars_color: 0.6, 0, 0, 1
-                    labels_color: 0.6, 0, 0, 1
-                    lines_color: 0.6, 0, 0, 1
-                    on_select: root.set_text(args)
+#MDBottomNavigation:
+#
+#    MDBottomNavigationItem:
+#        name: "home"
+#        text: "Home"
+#        icon: "home"
+#        on_tab_press: app.screen_capture("home")
+#
+#    MDBottomNavigationItem:
+#        name: "daily"
+#        text: "Daily"
+#        icon: "calendar"
+#        on_tab_press: app.screen_capture("daily")
+#
+#    MDBottomNavigationItem:
+#        name: "report"
+#        text: "Report"
+#        icon: "file-chart"
+#        on_tab_press: app.screen_capture("report")
+#
+#
 
 
-        MDBoxLayout:
-            adaptive_height: True
-
-            MDRaisedButton:
-                text: "update"
-                on_release: root.update()
-
-            MDLabel:
-                id: _label
-                halign: "center"
-                valign: "center"
